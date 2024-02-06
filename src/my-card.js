@@ -25,7 +25,7 @@ export class MyCard extends LitElement {
     super();
     this.myTitle = "My card";
     this.img = "#";
-    this.details = "#";
+    this.details = "Details";
     this.link = "#";
   }
 
@@ -36,8 +36,8 @@ export class MyCard extends LitElement {
       }
 
       .card.change-color {
-  background-color: var(--basic-color);
-}
+        background-color: var(--basic-color);
+      }
 
 .card {
   background-color: #D4EFFD;
@@ -81,13 +81,11 @@ export class MyCard extends LitElement {
   color: white;
 }
 
-
-    `;
-  }
+  `;
+}
 
   render() {
     return html`
-      <div id="cardlist">
         <div class="card">
             <h1 class="card-title">${this.myTitle}</h1>
             <img class="card-image" src="${this.img}">
@@ -96,7 +94,6 @@ export class MyCard extends LitElement {
               <button class="button">Details</button>
             </a>
         </div>  
-      </div>
     `; 
   }
 
