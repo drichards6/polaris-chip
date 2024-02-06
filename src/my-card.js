@@ -23,7 +23,7 @@ export class MyCard extends LitElement {
 
   constructor() {
     super();
-    this.title = "My card";
+    this.myTitle = "My card";
     this.img = "#";
     this.details = "#";
     this.link = "#";
@@ -89,7 +89,7 @@ export class MyCard extends LitElement {
     return html`
       <div id="cardlist">
         <div class="card">
-            <h1 class="card-title">${this.title}</h1>
+            <h1 class="card-title">${this.myTitle}</h1>
             <img class="card-image" src="${this.img}">
             <p class="card-details">${this.details}</p>
             <a href="${this.link}" rel="noopener noreferrer">
@@ -102,7 +102,7 @@ export class MyCard extends LitElement {
 
   static get properties() {
     return {
-      title: { type: String },
+      myTitle: { type: String, attribute: "my-title" },
       img: { tpe: String },
       details: { tpe: String },
       link: { tpe: String },
