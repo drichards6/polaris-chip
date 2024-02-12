@@ -127,10 +127,12 @@
     });
 
     document.querySelector('#delete').addEventListener('click', function(event) {
-      const cardList = document.querySelectorAll('#cardlist');
-      if (cardList.children.length > 1) {
-        cardList.lastElementChild.remove();
-      } //end for each loop
+       const myCards = document.querySelectorAll('my-card');
+       const lastCard = myCards[myCards.length - 1];
+
+       if (myCards.length !== 1) {
+        lastCard.remove();
+       }
     });
     
    </script>
