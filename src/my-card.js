@@ -43,7 +43,7 @@ export class MyCard extends LitElement {
       }   
 
       .card.change-color {
-        background-color: var(--basic-color);
+        background-color: #e347ff;
       }
 
       .card {
@@ -121,6 +121,7 @@ export class MyCard extends LitElement {
 
   render() {
     return html`
+      <div id="cardlist"></div>
         <div class="card">
             <h1 class="card-title">${this.myTitle}</h1>
             <img class="card-image" src="${this.img}">
@@ -134,6 +135,7 @@ export class MyCard extends LitElement {
               <button class="button">Details</button>
             </a>
         </div>  
+      </div>
     `; 
   }
 

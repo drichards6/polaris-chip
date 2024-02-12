@@ -19,6 +19,8 @@
     polaris-chip {
       margin: 16px;
     }
+
+     
   </style>
   <title>polaris-chip / my-card</title>
 </head>
@@ -34,38 +36,55 @@
   <!-- this is going to take the tag and change the title -->
   <polaris-chip title="Cool stuff"></polaris-chip>
 
+  
+  
+
   <h1>my-card</h1>
-  <my-card my-title="Peach Bowl" 
+  <div class="cardlist">
+      <button id="duplicate">Clone Card</button>
+      <button id="changetitle">Change Title</button>
+      <button id="changeimage">Change Image</button>
+      <button id="changebg">Change background</button>
+      <button id="delete">Delete card</button>
+  </div>
+
+  <my-card 
+  my-title="Peach Bowl" 
   img="https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Peach_Bowl_logo.svg/1200px-Peach_Bowl_logo.svg.png" 
   link="https://hax.psu.edu">
     <p><strong>Penn State</strong> vs. <strong>Ole Miss</strong></p>
   </my-card>
 
-  <my-card my-title="Rose Bowl" 
+  <my-card 
+  my-title="Rose Bowl" 
   img="https://1000logos.net/wp-content/uploads/2022/03/Rose-Bowl-Logo-1982.png" 
   link="https://hax.psu.edu">
     <p><strong>Michigan</strong> vs. <strong>Alabama</strong></p>
   </my-card>
 
-  <my-card my-title="Cotton Bowl" 
+  <my-card 
+  my-title="Cotton Bowl" 
   img="https://collegefootballplayoff.com/images/2022/3/14/New_Year_s_Six_Cotton.png"  
   link="https://hax.psu.edu">
     <p><strong>Ohio State</strong> vs. <strong>Missouri</strong></p>
   </my-card>
 
-  <my-card my-title="Sugar Bowl" 
+  <my-card 
+  my-title="Sugar Bowl" 
   img="https://upload.wikimedia.org/wikipedia/en/thumb/9/98/Sugar_Bowl_Logo.svg/1200px-Sugar_Bowl_Logo.svg.png"
   link="https://hax.psu.edu">
     <p><strong>Washington</strong> vs. <strong>Texas</strong></p>
   </my-card>
 
-  <my-card my-title="Orange Bowl" 
+  <my-card 
+  my-title="Orange Bowl" 
   img="https://upload.wikimedia.org/wikipedia/en/thumb/5/51/Orange_Bowl_logo.svg/1200px-Orange_Bowl_logo.svg.png" 
   link="https://hax.psu.edu">
     <p>Florida State vs. Georgia</p>
   </my-card>
 
-  <my-card my-title="Fiesta Bowl"
+  <my-card 
+  my-title="Fiesta Bowl"
   img="https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/Fiesta_Bowl_Logo.svg/1200px-Fiesta_Bowl_Logo.svg.png" 
   link="https://hax.psu.edu">
     <p><strong>Oregon</strong> vs. <strong>Liberty</strong></p>
@@ -75,7 +94,46 @@
   <script type="module" src="./src/polaris-chip.js"></script>
   <script type="module" src="./src/my-card.js"></script>
 
-  <script></script>
+  <script>
+    document.querySelector('#duplicate').addEventListener('click', function(event) {
+      const cards = document.querySelectorAll('my-card');
+      if (cards.length > 0 && cards.length < 10) {
+        const lastCard = cards[cards.length - 1];
+        const newCard = lastCard.cloneNode(true);
+        document.querySelector('.cardlist').appendChild(newCard);
+      }
+    });
+
+    document.querySelector('#changetitle').addEventListener('click', function(e) {
+      const myCard = document.querySelector('my-card');
+      myCard.myTitle = "Go State";
+    });
+
+    document.querySelector('#changeimage').addEventListener('click', function(e) {
+      const myCard = document.querySelector('my-card');
+      myCard.img = "https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Penn_State_Nittany_Lions_logo.svg/1200px-Penn_State_Nittany_Lions_logo.svg.png";
+    });
+
+    document.querySelector('#changebg').addEventListener('click', function(event) {
+      const myCards = document.querySelectorAll('my-card');
+      myCards.forEach(myCard => {
+        const shadowRoot = myCard.shadowRoot;
+        const cards = shadowRoot.querySelectorAll(".card");
+
+        cards.forEach(card => {
+          card.classList.toggle('change-color')
+        })
+      }) //end for each loop
+    });
+
+    document.querySelector('#delete').addEventListener('click', function(event) {
+      const cardList = document.querySelectorAll('#cardlist');
+      if (cardList.children.length > 1) {
+        cardList.lastElementChild.remove();
+      } //end for each loop
+    });
+    
+   </script>
   
 </body>
 
