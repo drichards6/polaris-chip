@@ -128,7 +128,8 @@ export class MyCard extends LitElement {
             <meme-maker 
             alt="Cat stalking a small toy" 
             image-url="${this.img}" 
-            bottom-text="${this.myTitle}">
+            bottom-text="${this.myTitle}"
+            class="card-image">
             </meme-maker>
             <details ?open="${this.fancy}" @toggle="${this.openChanged}">
               <summary>Description</summary>
