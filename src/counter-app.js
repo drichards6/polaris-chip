@@ -3,25 +3,30 @@ import { LitElement, html, css } from 'lit';
 export class CounterApp extends LitElement {
 
   static get tag() {
-      return 'my-card';
+      return 'counter-app';
   }
   
   constructor() {
       super();
-      this.myTitle = "My card";
+      this.myTitle = "Counter App";
       this.img = "#";
-      this.description = "Details";
-      this.link = "#";
-      this.fancy = false;
-  }
+    } 
   
   static get styles() {
       return css`
         :host {
           display: block;
         }
+
+        .counter {
+            background-color: navy;
+            color: white;
+            border: 2px solid grey;
+            padding: 8px;
+        }
+
       `;
-  }
+    }
   
   openChanged(e) {
       console.log(e.newState);
@@ -31,13 +36,18 @@ export class CounterApp extends LitElement {
       else {
         this.fancy = false;
       }
-  }
+    }
   
   render() {
       return html`
         
+        <div class="counter">
+            <h2 class="title-text">${my-title}</h2>
+            <p>19</p>
+        </div>
+
       `; 
-  }
+    }
   
   
   static get properties() {
@@ -45,7 +55,7 @@ export class CounterApp extends LitElement {
         myTitle: { type: String, attribute: "my-title" },
         img: { tpe: String },
       };
-  }
+    }
 }
   
 globalThis.customElements.define(CounterApp.tag, CounterApp);
