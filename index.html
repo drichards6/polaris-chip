@@ -30,7 +30,14 @@
 
   <h1>Counter App!</h1>
 
-  <counter-app my-title="Count"></counter-app>
+
+  <counter-app my-title="Counter" max="22" min="0" num="10"></counter-app>
+  <counter-app></counter-app>
+
+
+
+
+
 
   <h1>polaris-chip</h1>
   <!-- this is going to do whatever the tag's defaults are -->
@@ -106,6 +113,7 @@
   <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>
   <script type="module" src="./src/my-card.js"></script>
+  <script type="module" src="./src/counter-app.js"></script>
 
   <script>
     document.querySelector('#duplicate').addEventListener('click', function(event) {
