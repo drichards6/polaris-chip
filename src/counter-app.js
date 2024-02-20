@@ -58,6 +58,12 @@ export class CounterApp extends LitElement {
         color: white;
       }
 
+      .minus:disabled, .plus:disabled {
+        background-color: #C8DFEB;
+        color:  #A1B2BB;
+        cursor: not-allowed;
+      }
+
       `;
     }
 
