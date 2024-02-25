@@ -28,17 +28,21 @@
 
 <body>
 
-  <h1>Counter App!</h1>
+<!--Alerts Section-->
+  <h1>Alerts</h1>
+  <alerts-app class="notice"></alerts-app> <!-- make sticky-->
+  <alerts-app class="notice"></alerts-app>
+  <alerts-app class="warning"></alerts-app>
+  <alerts-app class="alert"></alerts-app>
 
+<!--Counter App Section-->
+  <h1>Counter App!</h1>
 
   <counter-app my-title="Counter" max="25" min="10" num="16"></counter-app>
   <counter-app></counter-app>
 
 
-
-
-
-
+<!--Polaris Chip Section-->
   <h1>polaris-chip</h1>
   <!-- this is going to do whatever the tag's defaults are -->
   <polaris-chip title="News of Record" link="https://psu.edu"></polaris-chip>
@@ -49,9 +53,8 @@
   <!-- this is going to take the tag and change the title -->
   <polaris-chip title="Cool stuff"></polaris-chip>
 
-  
-  
 
+<!--My Card Section-->
   <h1>my-card</h1>
   <div class="cardlist">
       <button id="duplicate">Clone Card</button>
@@ -114,6 +117,7 @@
   <script type="module" src="./src/polaris-chip.js"></script>
   <script type="module" src="./src/my-card.js"></script>
   <script type="module" src="./src/counter-app.js"></script>
+  <script type="module" src="./src/alerts.js"></script>
 
   <script>
     document.querySelector('#duplicate').addEventListener('click', function(event) {
@@ -157,7 +161,5 @@
     });
     
    </script>
-  
 </body>
-
 </html>
