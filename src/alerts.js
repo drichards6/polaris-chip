@@ -22,11 +22,11 @@ export class Alerts extends LitElement {
         }
 
         :host([sticky]) {
-            background-color: lightblue;
+            // do something 
         }
 
         :host([urgency="notice"]) {
-            background-color: lightblue;
+            background-color: lightblue; //make this assign the variable color, not change the background color
         }
 
         :host([urgency="warning"]) {
