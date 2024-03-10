@@ -30,10 +30,22 @@
 
 <!--Alerts Section-->
   <h1>Alerts</h1>
-  <alerts-app></alerts-app> <!-- make sticky-->
-  <alerts-app status="notice"></alerts-app>
-  <alerts-app status="warning"></alerts-app>
-  <alerts-app status="alert"></alerts-app>
+  <alerts-app>
+    <h4 slot="title">WARNING: this is a bit more seriouse</h4>
+    <p>MESSAGE</p>
+  </alerts-app> <!-- make sticky-->
+  <alerts-app status="notice">
+    <h4 slot="title">NOTICE: this is a mild issue</h4>
+    <p>MESSAGE</p>
+  </alerts-app>
+  <alerts-app status="warning">
+    <h4 slot="title">WARNING: this is a bit more serious</h4>
+    <p>MESSAGE</p>
+  </alerts-app>
+  <alerts-app status="alert">
+    <h4 slot="title">ALERT: stop what you are doing!</h4>
+    <p>MESSAGE</p>
+  </alerts-app>
 
 <!--Counter App Section-->
   <h1>Counter App!</h1>

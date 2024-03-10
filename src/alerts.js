@@ -9,10 +9,11 @@ export class Alerts extends LitElement {
   constructor() {
       super();
       this.sticky = false;
-      this.status = "warning"
+      this.status = "warning";
       this.opened = true;
-      if (localStorage.getItem('campus-alert-opened-state') == 'false') {
+      if (localStorage.getItem('campus-alert-opened-state') === 'closed') {
         this.opened = false;
+        this.style.setProperty('--custom-alert-height', '48px');
       }
       this.msg = "This is a warning. Exercise caution."
       this.date = "August 22, 2024"
@@ -23,7 +24,16 @@ export class Alerts extends LitElement {
         :host {
           display: flex;
           width: 100%;
-          height: 128px;
+        }
+
+        :host([open]) .outside-wrapper {
+        max-height: var(--custom-alert-height);
+      }
+
+        :host([sticky]) {
+          position: sticky;
+          top: 0;
+          z-index: 99999;
         }
 
         :host([status="notice"]) {
@@ -44,18 +54,22 @@ export class Alerts extends LitElement {
         .outside-wrapper {
           display: flex;
           background-color: var(--outsidebgcolor);
-          height: 100%;
+          height: var(--custom-alert-height, 100px);
           width: 100%;
           align-items: center;
           justify-content: center;
           position: relative;
         }   
 
-        button {
+        .closed .outside-wrapper {
+          height: var(--custom-alert-closed-height, var(--custom-alert-height, 48px));
+        }
+
+        .btn {
           max-height: 24px;
           position: absolute;
-          top: 10%;
-          right: 20%;
+          top: 20%;
+          right: 5%;
           background-color: white; 
         }
 
@@ -66,7 +80,7 @@ export class Alerts extends LitElement {
           height: 100%;
           align-items: center;
           justify-content: center;
-          padding: 0 24px;
+          padding: 0 48px;
         }
 
         .text-wrapper {
@@ -74,6 +88,7 @@ export class Alerts extends LitElement {
           display: flex;
           align-items: center;
           justify-content: center;
+          max-width: 540px;
         }
 
       `;
@@ -81,15 +96,28 @@ export class Alerts extends LitElement {
 
   toggleAlert() {
     this.opened = !this.opened;
+
+    if (!this.opened) {
+      this.style.setProperty('--custom-alert-height', '50px');
+      localStorage.setItem('campus-alert-opened-state', 'closed');
+    } 
+    else {
+      this.style.removeProperty('--custom-alert-height');
+      localStorage.removeItem('campus-alert-opened-state');
+    }
+
   }
 
   render() {
       return html`
-        <div class="outside-wrapper"> 
+        <div class="outside-wrapper ${this.open ? '' : 'closed'}" ?sticky="${this.sticky}"> 
           <div class="middle-wrapper"> 
-            <p class="text-wrapper">This is a larger alert message.</p>
+            <div class="text-wrapper"><p><slot name="title"></slot></p>
+            ${this.open ? html`<slot></slot>` : ''}</div>
           </div>  
-            <button>x</button>
+            <button class="btn" @click="${this.toggleAlert}">
+              ${this.open ? 'Close' : 'Open'} 
+            </button>
         </div>
 
       `; 
@@ -100,6 +128,7 @@ export class Alerts extends LitElement {
         sticky: { type: Boolean, reflect: true },
         status: { type: String, reflect: true },
         opened: { type: Boolean, reflect: true},
+        date: { type: String },
         msg: { type: String },
       };
     }
