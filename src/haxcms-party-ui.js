@@ -20,22 +20,16 @@ export class HaxcmsPartyUI extends DDD {
       :host {
         display: block;
       }
-      .my-div {
-        padding: var(--ddd-spacing-5);
-        margin: var(--ddd-spacing-2) var(--ddd-spacing-0);
-        color: var(--ddd-theme-default-keystoneYellow);
-      }
 
-      .haxcms-party-ui-wrapper {
+      .haxcms-party-ui-container {
         margin: var(--ddd-spacing-2) var(--ddd-spacing-0);
         background-color: var(--ddd-theme-default-creekTeal);
         height: var(--ddd-spacing-30);
       }
 
-      .top-input-section {
+      .top-input-section-container {
         background-color: var(--ddd-theme-default-creekLight);
-        width: 100%;
-        height: 25%;
+        width: 80%;
         position: relative;
         margin-bottom: 30px;
       }
@@ -57,17 +51,18 @@ export class HaxcmsPartyUI extends DDD {
 
   render() {
     return html `
-      <div class="haxcms-party-ui-container"></div>
+      <div class="haxcms-party-ui-container">
         <div class="top-input-section-container"></div>
           <div class="add-user-text">
             Add User:
           </div>
           <input type="text" class="user-input" placeholder="Username">
           <button class="add-button">Add</button>
-        <div class="bottom-characters-section"></div>
-            <div class="scroll-section"></div>
-
-
+        </div>
+      <div class="bottom-characters-section"></div>
+        <div class="scroll-section"></div>
+      </div>
+        
 
     `;
   }
