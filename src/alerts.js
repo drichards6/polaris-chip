@@ -34,7 +34,6 @@ export class Alerts extends LitElement {
         .sticky {
           position: sticky;
           top: 0;
-          z-index: 99999;
         }
 
         :host([status="notice"]) {

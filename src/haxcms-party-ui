@@ -10,7 +10,7 @@ export class HaxcmsPartyUI extends DDD {
 
   constructor() {
     super();
-    this.myItems = [];
+    this.myItems = ["drr5489", "ref1000", "dog250"];
   }
   
   static get styles() {
@@ -29,6 +29,7 @@ export class HaxcmsPartyUI extends DDD {
       .haxcms-party-ui-wrapper {
         margin: var(--ddd-spacing-2) var(--ddd-spacing-0);
         background-color: var(--ddd-theme-default-creekTeal);
+        height: var(--ddd-spacing-30);
       }
 
       .top-input-section {
@@ -39,17 +40,30 @@ export class HaxcmsPartyUI extends DDD {
         margin-bottom: 30px;
       }
 
+      .add-user-text {
+        color: var(--ddd-theme-default-landgrantBrown);
+        font-size: 20px;
+      }
+
     `];
+  }
+
+  processUserInput(e) {
+    const inputValue = e.target.value;
+    // Remove any characters that are not lowercase letters or numbers (took from emirahanna after class discussion)
+    const sanitizedValue = inputValue.replace(/[^a-z0-9]/g, "");
+    e.target.value = sanitizedValue.slice(0, 10);
   }
 
   render() {
     return html `
-      <div class="page-wrapper"></div>
-      <div class="haxcms-party-ui-wrapper"></div>
-        <div class="top-input-section"></div>
-          <div>
+      <div class="haxcms-party-ui-container"></div>
+        <div class="top-input-section-container"></div>
+          <div class="add-user-text">
             Add User:
           </div>
+          <input type="text" class="user-input" placeholder="Username">
+          <button class="add-button">Add</button>
         <div class="bottom-characters-section"></div>
             <div class="scroll-section"></div>
 
@@ -62,6 +76,7 @@ export class HaxcmsPartyUI extends DDD {
     return {
       // ...super.properties,
       myItems: { type: Array, attribute:"my-items" },
+      item: { type: String, },
     }
   }
 
